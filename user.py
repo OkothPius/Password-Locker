@@ -13,3 +13,29 @@ class User:
         self.last_name = last_name
         self.phone_number = number
         self.email = email
+
+    user_detail = [] # Empty contact list
+ # Init method up here
+    def save_user(self):
+
+        '''
+        save_user method saves uesr objects into user_detail
+        '''
+
+        User.user_detail.append(self)
+
+
+    def delete_user(self):
+
+        '''
+        delete_user method deletes a saved user from the user_detail
+        '''
+
+        User.user_detail.remove(self)
+
+    @classmethod
+    def find_by_number(cls,number):
+        for user in cls.user_detail:
+            if user.phone_number == number:
+                return user
+    
