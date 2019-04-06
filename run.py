@@ -16,7 +16,7 @@ def save_users(user):
     user.save_user()
 
 #Deleting a user
-def delete_user(user):
+def del_user(user):
     '''
     Function to delete a user
     '''
@@ -37,7 +37,7 @@ def check_existing_users(number):
     return User.user_exist(number)
 
 #Display user
-def dispaly_users():
+def display_users():
     '''
     Function that returns all the saved users
     '''
