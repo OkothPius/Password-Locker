@@ -45,7 +45,7 @@ def display_users():
 
 #Main Function
 def main():
-    print("Hello Welcome to your user details. What is your name?")
+    print("Welcome to user details. What is your name?")
     user_name = input()
 
     print(f"Hello {user_name}. what would you like to do?")
@@ -109,7 +109,7 @@ def main():
                             print("That user does not exist")
 
             elif short_code == "ex":
-                    print("Bye .......")
+                    print("Thanks,Your Details Have Been Saved Successfully.")
                     break
             else:
                     print("I really didn't get that. Please use the short codes")
