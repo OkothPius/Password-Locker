@@ -30,14 +30,14 @@ def find_user(number):
     return User.find_by_number(number)
 
 #Checking if a user exists
-def check_existing_user(number):
+def check_existing_users(number):
     '''
     Function that checks if a user exist with that number
     '''
     return User.user_exist(number)
 
 #Display user
-def dispaly_user():
+def dispaly_users():
     '''
     Function that returns all the saved users
     '''
