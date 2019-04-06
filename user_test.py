@@ -1,3 +1,4 @@
+import pyperclip
 import unittest # Importing the unittest module
 from user import User # Importing the contact class
 
@@ -106,6 +107,66 @@ class TestUser(unittest.TestCase):
         for user in cls.user_detail:
             if user.phone_number == number:
                 return user
+
+       #sixthTest
+    def test_user_exists(self):
+        '''
+        test to check if we can return a Boolean  if we cannot find the user.
+        '''
+
+        self.new_user.save_user()
+        test_user = User("Test","user","0711223344","test@user.com") # new user
+        test_user.save_user()
+
+        user_exists = User.user_exist("0711223344")
+
+        self.assertTrue(user_exists)
+
+    @classmethod
+    def user_exist(cls,number):
+        '''
+        Method that checks if a user exists from the user_detail.
+        Args:
+            number: Phone number to search if it exists
+        Returns :
+            Boolean: True or false depending if the contact exists
+        '''
+        for user in cls.user_detail:
+            if user.phone_number == number:
+                    return True
+
+        return False
+
+    def test_display_all_users(self):
+        '''
+        method that returns a list of all  saved users
+        '''
+
+        self.assertEqual(User.display_users(),User.user_detail)
+
+    @classmethod
+    def display_users(cls):
+        '''
+        method that returns the user_detail
+        '''
+        return cls.user_detail
+
+    def test_copy_email(self):
+        '''
+        Test to confirm that we are copying the email address from a found user
+        '''
+
+        self.new_user.save_user()
+        User.copy_email("0712345678")
+
+        self.assertEqual(self.new_user.email,pyperclip.paste())
+
+    @classmethod
+    def copy_email(cls,number):
+        user_found = User.find_by_number(number)
+        pyperclip.copy(user_found.email)
+
+
 
 
 
