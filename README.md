@@ -32,7 +32,7 @@ _An application that will help us manage our passwords and even generate new pas
 
 ## Bugs
 
-* _No bugs
+* _Since there is no database to support the app, once you exit or log out of a session you loose all the credentials and created user. You have to create a new user for every session. You can still use the default login but if you exit the app, you will still loose all the credentials you created._
 
 ## Technologies Used
 

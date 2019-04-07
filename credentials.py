@@ -1,68 +1,47 @@
-import pyperclip
 class Credentials:
-    """
-    Class that generates new instances of credentials.
-    """
+    """Create class for credentials"""
 
-    credentials_account = []
+    def __init__(self, account_name, account_password):
+        self.account_name = account_name
+        self.account_password = account_password
 
-    def __init__(self,user_name,social_account,number,email):
+    credentials_list = []
 
-      # docstring removed for simplicity
-
-        self.user_name = user_name
-        self.social_account = social_account
-        self.password = number
-        self.email = email
-
-    credentials_account = [] # Empty credentials account
- # Init method up here
     def save_credentials(self):
+        """Method that saves credential objects into credentials_list"""
+        self.credentials_list.append(self)
 
-        '''
-        save_credentials method saves credentials objects into credentials account
-        '''
-
-        Credentials.credentials_account.append(self)
-
-    def delete_credentials(self):
-
-        '''
-        delete_credentials method deletes a saved credentials from the credentials account
-        '''
-
-        Credentials.credentials_account.remove(self)
+    def delete_credential(self):
+        """Method which deletes a particular credential"""
+        Credentials.credentials_list.remove(self)
 
     @classmethod
-    def credentials_exist(cls,number):
-        for credentials in cls.credentials_account:
-            if credentials.password == number:
-                    return True
+    def find_by_name(cls, account_name):
+        """Method that takes in a name and returns a credential that matches that particular name
+        Args:
+            name: account_name that has a password
+        Returns:
+            The account_name and it's corresponding PassWord
+        """
 
+        for credential in cls.credentials_list:
+            if credential.account_name == account_name:
+                return credential
+
+    @classmethod
+    def credential_exists(cls, name):
+        """Method to check whether a credential exists
+        Args:
+        name: name of account to search whether it exists
+        boolean: True or False depending if the credential exists
+        """
+
+        for credential in cls.credentials_list:
+            if credential.account_name == name:
+                return True
         return False
 
     @classmethod
     def display_credentials(cls):
-        '''
-        method that returns the credentials account
-        '''
-        return cls.credentials_account
-
-    @classmethod
-    def copy_email(cls,number):
-        credentials_found = Credentials.find_by_number(number)
-        pyperclip.copy(credentials_found.email)
-
-    # def password_credentials(self):
-    #     '''
-    #     Generate a password randomly
-    #     '''
-    #     Credentials.credentials_account.reverse(self)
-
-
-    @classmethod
-    def find_by_number(cls,number):
-    
-        for credentials in cls.credentials_account:
-            if credentials.password == number:
-                return credentials
+        """Method which displays all current credentials"""
+        return cls.credentials_list
