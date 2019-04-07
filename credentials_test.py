@@ -1,3 +1,4 @@
+import pyperclip
 import unittest # Importing the unittest module
 from credentials import Credentials # Importing the contact class
 
@@ -84,18 +85,76 @@ class TestCredentials(unittest.TestCase):
 
         Credentials.credentials_account.remove(self)
 
-    #FifthTest
-    def test_password_credentials(self):
+    #Credentials Exist
+    def test_credentials_exists(self):
         '''
-        Returns a string of random characters,useful in generating temporary
-        passwords for automated password resets.
+        test to check if we can return a Boolean  if we cannot find the credentials.
         '''
+
         self.new_credentials.save_credentials()
         test_credentials = Credentials("Test","account","1613","test@user.com") # new credentials
         test_credentials.save_credentials()
 
-        self.new_credentials.password_credentials()#creating a password in Credentials
-        self.assertEqual(len(Credentials.credentials_account),1)
+        credentials_exists = Credentials.credentials_exist("1613")
+
+        self.assertTrue(credentials_exists)
+
+    @classmethod
+    def credentials_exist(cls,number):
+        '''
+        Method that checks if a credentials exists from the credentials_account.
+        Args:
+            number: Password to search if it exists
+        Returns :
+            Boolean: True or false depending if the contact exists
+        '''
+        for credentials in cls.credentials_account:
+            if credentials.password == number:
+                    return True
+
+        return False
+
+    #Display Credentials
+    def test_display_all_credentials(self):
+        '''
+        method that returns a list of all credentials saved
+        '''
+
+        self.assertEqual(Credentials.display_credentials(),Credentials.credentials_account)
+
+    def test_copy_email(self):
+        '''
+        Test to confirm that we are copying the email address from a found credentials
+        '''
+
+        self.new_credentials.save_credentials()
+        Credentials.copy_email("1613")
+
+        self.assertEqual(self.new_credentials.email,pyperclip.paste())
+
+    @classmethod
+    def copy_email(cls,number):
+        credentials_found = Credentials.find_by_number(number)
+        pyperclip.copy(credentials_found.email)
+
+    # #FifthTest
+    # def test_password_credentials(self):
+    #     '''
+    #     Returns a string of random characters,useful in generating temporary
+    #     passwords for automated password resets.
+    #     '''
+    #     self.new_credentials.save_credentials()
+    #     test_credentials = Credentials("Test","account","1613","test@user.com") # new credentials
+    #     test_credentials.save_credentials()
+    #
+    #     self.new_credentials.password_credentials()#creating a password in Credentials
+    #     self.assertEqual(len(Credentials.credentials_account),1)
+    #
+    # def password_credentials(self):
+    #     '''
+    #     Generate a password randomly
+    #     '''
+    #     Credentials.credentials_account.reverse(self)
 
     # #FifthTest
     # def test_find_credentials_by_number(self):
