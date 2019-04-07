@@ -31,4 +31,10 @@ class Credentials:
         '''
 
         Credentials.credentials_account.remove(self)
-        
+
+    # @classmethod
+    # def find_by_number(cls,number):
+    #
+    #     for credentials in cls.credentials_account:
+    #         if credentials.password == number:
+    #             return credentials

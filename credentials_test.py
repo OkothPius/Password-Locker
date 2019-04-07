@@ -84,6 +84,49 @@ class TestCredentials(unittest.TestCase):
 
         Credentials.credentials_account.remove(self)
 
+    #FifthTest
+    def test_password_credentials(self):
+        '''
+        Returns a string of random characters,useful in generating temporary
+        passwords for automated password resets.
+        '''
+        self.new_credentials.save_credentials()
+        test_credentials = Credentials("Test","account","1613","test@user.com") # new credentials
+        test_credentials.save_credentials()
+
+        self.new_credentials.password_credentials()#creating a password in Credentials
+        self.assertEqual(len(Credentials.credentials_account),1)
+
+    # #FifthTest
+    # def test_find_credentials_by_number(self):
+    #     '''
+    #     test to check if we can find a credentials by password and display information
+    #     '''
+    #
+    #     self.new_credentials.save_credentials()
+    #     test_credentials = Credentials("Test","user","1613","test@user.com") # new credentials
+    #     test_credentials.save_credentials()
+    #
+    #     found_credentials = Credentials.find_by_number("1613")
+    #
+    #     self.assertEqual(found_credentials.email,test_credentials.email)
+    #
+    # @classmethod
+    # def find_by_number(cls,number):
+    #     '''
+    #     Method that takes in a number and returns a credentials that matches that number.
+    #
+    #     Args:
+    #         number: Password to search for
+    #     Returns :
+    #         Credentials of person that matches the number.
+    #     '''
+    #
+    #     for credentials in cls.credentials_account:
+    #         if credentials.password == number:
+    #             return credentials
+
+
 
 
 
