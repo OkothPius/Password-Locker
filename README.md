@@ -25,6 +25,8 @@ _An application that will help us manage our passwords and even generate new pas
 * _Open your GITHUB account_
 * _Clone this repository_
 * _Open the repository in your favourite editor_
+* _Install python3.6 and above_
+* _Install pyperclip_
 * _The apllication mainly uses the terminal(Linux)/prompt(windows)_
 * _Open run the file by python3.6 filename_
 * _./run.py to run the module_
