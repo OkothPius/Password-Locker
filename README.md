@@ -12,12 +12,8 @@ _An application that will help us manage our passwords and even generate new pas
 
 | Behavior        | Input           | Outcome  |
 | ------------- |:-------------:| -----:|
-| User runs ./run.py | User enter their details | The application saves the details |
-| Player 1 clicks ROLL button | Click ROLL button | Dice rolls and number is generated
-| If Player 1 rolls any number other than 1, that roll is added to round total | Roll = 2 | Round total = 2 |
-| If Player 1 rolls a 1, no score is added and round for Player 1 ends | Roll = 1 | Round total = 2 / Total score = 2 / Player 2 begins |
-| Repeat for Player 2 | Roll = 1 | Round total = 0 / Total score = 0 / Player 1 begins |
-| When a player's total score reaches 100 or more, game ends and winner page shows | Player 1 total score = 100 | Winner page |
+| User types ./run.py in terminal | User enter their userName and password to create an account | The application saves the details and indicates if you have successfully created an account |
+| The application prompts you to enter select an option | User save,add,remove,search or logout of their account | The application verify by a text message if the options are selected correctly |
 
 
 ## Setup/Installation Requirements
@@ -34,7 +30,7 @@ _An application that will help us manage our passwords and even generate new pas
 
 ## Bugs
 
-* _Since there is no database to support the app, once you exit or log out of a session you loose all the credentials and created user. You have to create a new user for every session. You can still use the default login but if you exit the app, you will still loose all the credentials you created._
+* _Since there is no database to support the app, once you exit or log out of a session you loose all the credentials and    created user. You have to create a new user for every session. You can still use the default login but if you exit the app, you will still loose all the credentials you created._
 
 ## Technologies Used
 
