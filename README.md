@@ -38,9 +38,8 @@ _An application that will help us manage our passwords and even generate new pas
 
 ## Contact Information
 
-* _FACEBOOK:_orukopius
-* _IG:__oruko_
-* _TEL:_0719-121-890
+* _Email:_ _orukopius@student.ku.ac.ke
+* _TEL:_ _0719-121-890
 
 ### License
 
